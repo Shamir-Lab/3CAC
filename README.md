@@ -11,7 +11,7 @@
 * PlasClass (https://github.com/Shamir-Lab/PlasClass)
 * DeepVirFinder (https://github.com/jessieren/DeepVirFinder)
 
-To run 3CAC, please download the "Code" folder.
+To run 3CAC, please download the `3CAC` folder. 3CAC is written in Java and requires Java Runtime Environment. 
 
 # Usage
 
@@ -47,7 +47,7 @@ java Algorithm3CAC --assembler Flye/SPAdes --initial 3CAC_initial_classification
 
 ## 3. Example
 
-A
+
 
 
 # Contacts
