@@ -26,7 +26,7 @@ To run 3CAC, please download the `3CAC` folder. 3CAC is written in Java and requ
 For contigs assembled from short reads by metaSPAdes, files `scaffolds.fasta`, `assembly_graph_with_scaffolds.gfa`, and `scaffolds.path` can be used as input.
 for contigs assembled from long reads by metaFlye, files `assembly.fasta`, `assembly_graph.gfa`, `assembly_info.txt` can be used as input.
 
-## 1. Generation of the initial classification
+## 1. Generate the initial classification of 3CAC
 
 (1) Run either `viralVerify` or `PPR-Meta` on the contig file to classify each of the input contigs as phage, plasmid, chromosome, or uncertain.
 
@@ -37,15 +37,15 @@ for contigs assembled from long reads by metaFlye, files `assembly.fasta`, `asse
 
 (3) Run `PlasClass` on `plasmidContigs.fasta` and run `DeepVirFinder` on `phageContigs.fasta`.
 
-(4) Generate file `3CAC_initial_classification.fasta` containing the initial classification result of 3CAC. 
+(4) Generate the initial classification result of 3CAC. 
    ```sh
    java InitialClassification3CAC --assembler Flye/SPAdes --PPRMeta(or --viralVerify) output_file_of_PPRMeta_or_viralVerify.csv --PlasClass output_file_of_PlasClass.probs.out --deepVirFinder output_file_of_deepVirFinder.txt
    ```
 
 
-## 2. Generatation of the final classification
+## 2. Generatate the final classification of 3CAC
 
-Generate file `3CAC_classification.fasta` containing the final classification result of 3CAC. 
+Generate the final classification result of 3CAC. 
 ```sh
 java Algorithm3CAC --assembler Flye/SPAdes --initial 3CAC_initial_classification.fasta --graph assembly_graph_file.gfa --path scaffolds.path/assembly_info.txt
 ```
