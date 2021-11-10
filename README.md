@@ -23,8 +23,8 @@ To run 3CAC, please download the `3CAC` folder. 3CAC is written in Java and requ
 
 (c) a file has path information for each contig, such as `scaffolds.path` in metaSPAdes assembly and `assembly_info.txt` in metaFlye assembly.
 
-For contigs assembled from short reads by metaSPAdes, user can use files `scaffolds.fasta`, `assembly_graph_with_scaffolds.gfa`, and `scaffolds.path` as input.
-for contigs assembled from long reads by metaFlye, user can use files `assembly.fasta`, `assembly_graph.gfa`, `assembly_info.txt` as input.
+For contigs assembled from short reads by metaSPAdes, files `scaffolds.fasta`, `assembly_graph_with_scaffolds.gfa`, and `scaffolds.path` can be used as input.
+for contigs assembled from long reads by metaFlye, files `assembly.fasta`, `assembly_graph.gfa`, `assembly_info.txt` can be used as input.
 
 ## 1. Generation of the initial classification
 
@@ -50,7 +50,22 @@ Generate file `3CAC_classification.fasta` containing the final classification re
 java Algorithm3CAC --assembler Flye/SPAdes --initial 3CAC_initial_classification.fasta --graph assembly_graph_file.gfa --path scaffolds.path/assembly_info.txt
 ```
 
+## 3. Example
 
+A test dataset could be found under the `test` folder.
+
+**(1) To generate the initial classification of 3CAC based on viralVerify solution.**
+ ```sh
+   java InitialClassification3CAC --assembler Flye or --viralVerify assembly_viralVerify.csv --PlasClass viralVerify_plasmidContigs_PlasClass.fasta.probs.out --deepVirFinder viralVerify_phageContigs_deepVirFinder.txt
+   ```
+**(2) To generate the initial classification of 3CAC based on PPR-Meta solution.**
+ ```sh
+   java InitialClassification3CAC --assembler Flye or --PPRMeta assembly_PPRMeta.csv --PlasClass PPRMeta_plasmidContigs_PlasClass.fasta.probs.out --deepVirFinder PPRMeta_phageContigs_deepVirFinder.txt
+   ```
+**(3) To generate the final classification result of 3CAC.**
+```sh
+java Algorithm3CAC --assembler Flye --initial 3CAC_initial_classification.fasta --graph assembly_graph.gfa --path assembly_info.txt
+```
 
 
 
