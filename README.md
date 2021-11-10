@@ -45,8 +45,6 @@ java Algorithm3CAC --assembler Flye/SPAdes --initial 3CAC_initial_classification
 ```
 
 
-## 3. Example
-
 
 
 
