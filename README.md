@@ -15,7 +15,8 @@ To run 3CAC, please download the `3CAC` folder. 3CAC is written in Java and requ
 
 # Usage
 
-3CAC requires the following input files: 
+## 1. Input 
+3CAC requires the following input files:
 
 **(1) Contig file in "fasta" format:** a set of contigs to be classified. 
 
@@ -26,7 +27,7 @@ To run 3CAC, please download the `3CAC` folder. 3CAC is written in Java and requ
 For contigs assembled from short reads by metaSPAdes, files `scaffolds.fasta`, `assembly_graph_with_scaffolds.gfa`, and `scaffolds.path` can be used as input.
 for contigs assembled from long reads by metaFlye, files `assembly.fasta`, `assembly_graph.gfa`, `assembly_info.txt` can be used as input.
 
-## 1. Running PPR-Meta, viralVerify, PlasClass and DeepVirFinder
+## 2. Running PPR-Meta, viralVerify, PlasClass and DeepVirFinder
 
 (1) Run either `viralVerify` or `PPR-Meta` on the contig file to classify each of the input contigs as phage, plasmid, chromosome, or uncertain.
 
@@ -39,35 +40,25 @@ for contigs assembled from long reads by metaFlye, files `assembly.fasta`, `asse
 
 
 
-## 2. Running 3CAC
-
-**(1) Generate the initial classification result of 3CAC.** 
-   ```sh
-   java InitialClassification3CAC --assembler Flye/SPAdes --output output_directory --PPRMeta(or --viralVerify) output_file_of_PPRMeta_or_viralVerify.csv --PlasClass output_file_of_PlasClass.probs.out --deepVirFinder output_file_of_deepVirFinder.txt
-   ```
-
-**(2) Generate the final classification result of 3CAC.** 
+## 3. Running 3CAC
+ 
+**Generate classification result of 3CAC.** 
 ```sh
-java Algorithm3CAC --assembler Flye/SPAdes --output output_directory --initial 3CAC_initial_classification.fasta --graph assembly_graph_file.gfa --path scaffolds.path/assembly_info.txt
+java Classify3CAC --assembler Flye/SPAdes --output output_directory --graph assembly_graph_file.gfa --path scaffolds.path/assembly_info.txt --PPRMeta(or --viralVerify) output_file_of_PPRMeta_or_viralVerify.csv --PlasClass output_file_of_PlasClass.probs.out --deepVirFinder output_file_of_deepVirFinder.txt
 ```
 
-## 3. Example
+## 4. Example
 
 A small test dataset could be found under the `test` folder.
 
-**(1) To generate the initial classification of 3CAC based on viralVerify solution.**
+**(1) To generate classification result of 3CAC based on viralVerify solution.**
  ```sh
-   java InitialClassification3CAC --assembler Flye --output ./test/ --viralVerify ./test/assembly_viralVerify.csv --PlasClass ./test/viralVerify_plasmidContigs_plasClass.fasta.probs.out --deepVirFinder ./test/viralVerify_phageContigs_deepVirFinder.txt
+   java Classify3CAC --assembler Flye --output ./test/  --graph ./test/assembly_graph.gfa --path ./test/assembly_info.txt --viralVerify ./test/assembly_viralVerify.csv --PlasClass ./test/viralVerify_plasmidContigs_plasClass.fasta.probs.out --deepVirFinder ./test/viralVerify_phageContigs_deepVirFinder.txt
    ```
-**(2) To generate the initial classification of 3CAC based on PPR-Meta solution.**
+**(2) To generate classification result of 3CAC based on PPR-Meta solution.**
  ```sh
-   java InitialClassification3CAC --assembler Flye --output ./test/ --PPRMeta ./test/assembly_PPRMeta.csv --PlasClass ./test/PPRMeta_plasmidContigs_plasClass.fasta.probs.out --deepVirFinder ./test/PPRMeta_phageContigs_deepVirFinder.txt
+   java Classify3CAC --assembler Flye --output ./test/  --graph ./test/assembly_graph.gfa --path ./test/assembly_info.txt --PPRMeta ./test/assembly_PPRMeta.csv --PlasClass ./test/PPRMeta_plasmidContigs_plasClass.fasta.probs.out --deepVirFinder ./test/PPRMeta_phageContigs_deepVirFinder.txt
    ```
-**(3) To generate the final classification result of 3CAC.**
-```sh
-java Algorithm3CAC --assembler Flye --output ./test/ --initial ./test/3CAC_initial_classification.fasta --graph ./test/assembly_graph.gfa --path ./test/assembly_info.txt
-```
-
 
 
 # Contacts
