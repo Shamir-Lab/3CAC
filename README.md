@@ -33,7 +33,7 @@ for contigs assembled from long reads by metaFlye, files `assembly.fasta`, `asse
 
 (2) Generate files `phageContigs.fasta` and `plasmidContigs.fasta` containing contigs classified as phages and plasmids by step (1).
    ```sh
-   java PhageAndPlasmidContigs --output output_directory --contigs contig_file.fasta --PPRMeta(or --viralVerify) output_file_of_PPRMeta_or_viralVerify.csv
+   java PhageAndPlasmidContigs --output output_directory --contig contig_file.fasta --PPRMeta(or --viralVerify) output_file_of_PPRMeta_or_viralVerify.csv
    ```   
 
 (3) Run `PlasClass` on `plasmidContigs.fasta` and run `DeepVirFinder` on `phageContigs.fasta`.
