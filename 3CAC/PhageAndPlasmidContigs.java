@@ -50,7 +50,12 @@ public class PhageAndPlasmidContigs {
 			return Integer.parseInt(index[1]);
 		}
 		else{ //contigs assembled from Flye
-			return Integer.parseInt(header.substring(7));
+			if(header.substring(0, 6).equalsIgnoreCase("contig")){
+				return Integer.parseInt(header.substring(7));
+			}
+			else{//scaffolds
+				return Integer.parseInt(header.substring(9));
+			}
 		}
 	}
 	
